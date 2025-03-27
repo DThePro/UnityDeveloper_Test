@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class GlobalMusic : MonoBehaviour
 {
-    [SerializeField] private AudioClip musicClip;
-
     public static GlobalMusic Instance;
 
     private void Awake()
@@ -14,17 +12,5 @@ public class GlobalMusic : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

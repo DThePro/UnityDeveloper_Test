@@ -11,11 +11,6 @@ public class MainMenuController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Play()
     {
         startCanvas.SetActive(true);

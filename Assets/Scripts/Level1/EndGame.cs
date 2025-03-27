@@ -3,39 +3,37 @@ using UnityEngine;
 
 public class EndGame : MonoBehaviour
 {
+    #region Fields and Singleton Instance
     [SerializeField] GameObject endPanel;
 
     public static EndGame Instance;
-    static bool gameEnded = false;
+    public static bool gameEnded = false;
+    #endregion
 
     private void Awake()
     {
+        // Implement singleton pattern
         if (Instance == null)
         {
             Instance = this;
         }
-        else Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    #region Public Methods
+    // Trigger the end game sequence with different messages based on the state and points scored
     public void GameEnd(int state, int pointsScored)
     {
         if (!gameEnded)
         {
-            if (state == 0) // Success
+            // State 0: Successful completion with varying ending messages
+            if (state == 0)
             {
                 endPanel.SetActive(true);
+                // Display points collected
                 endPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "You collected " + pointsScored + " out of 18 plasma cubes.";
 
                 TextMeshProUGUI ending = endPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
@@ -62,6 +60,7 @@ public class EndGame : MonoBehaviour
                 }
                 gameEnded = true;
             }
+            // State 1: Suit out of signal
             else if (state == 1)
             {
                 endPanel.SetActive(true);
@@ -71,4 +70,5 @@ public class EndGame : MonoBehaviour
             }
         }
     }
+    #endregion
 }

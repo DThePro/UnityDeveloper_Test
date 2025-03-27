@@ -6,38 +6,40 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
-    [SerializeField] float startDelay = 3f, totalTime = 120f;
-    [SerializeField] TextMeshProUGUI timerText, gameClockText;
-    
-    [SerializeField] CanvasGroup fadeGroup;
-    [SerializeField] Controller controller;
-    [SerializeField] InteractController interactController;
-    [SerializeField] GameObject pauseMenuObject;
+    #region Serialized Fields
+    [SerializeField] private float startDelay = 3f, totalTime = 120f;
+    [SerializeField] private TextMeshProUGUI timerText, gameClockText;
+    [SerializeField] private CanvasGroup fadeGroup;
+    [SerializeField] private Controller controller;
+    [SerializeField] private InteractController interactController;
+    [SerializeField] private GameObject pauseMenuObject;
+    #endregion
 
+    #region Private Fields
     private float timeElapsed, gameClock;
-    GlobalControls controls;
-    bool isPaused = false;
+    private GlobalControls controls;
+    private bool isPaused = false;
+    #endregion
 
+    #region Unity Callbacks
     private void Awake()
     {
+        // Initialize input controls
         controls = new GlobalControls();
-
         controls.Pause.PauseAction.started += ctx => Pause(ctx);
-        // controls.Pause.PauseAction.canceled += ctx => Pause(ctx);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        // Time.timeScale = 0f;
+        // Initialize game clock and UI elements
         gameClock = totalTime;
         timeElapsed = startDelay;
         gameClockText.text = totalTime.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        // Handle start delay countdown
         if (timeElapsed > 0)
         {
             timeElapsed -= Time.deltaTime;
@@ -47,36 +49,39 @@ public class StartGame : MonoBehaviour
         }
         else
         {
+            // Enable player movement and disable UI elements after countdown
             timerText.gameObject.SetActive(false);
             fadeGroup.gameObject.SetActive(false);
             controller.canMove = true;
 
-            
+            // Handle game timer countdown
             if (gameClock > 0)
             {
                 gameClock -= Time.deltaTime;
                 gameClockText.text = Mathf.Ceil(gameClock).ToString();
-                // CheckPause();
             }
-            
+
+            // Change timer text color when close to expiration
             if (gameClock <= 15)
             {
                 gameClockText.color = Color.red;
             }
-            
+
+            // End game when timer reaches zero
             if (gameClock <= 0)
             {
                 interactController.canInteract = false;
-                // controller.canMove = false;
-
                 EndGame.Instance.GameEnd(0, interactController.points);
             }
         }
     }
+    #endregion
 
+    #region Pause and Resume Methods
+    // Toggle pause menu and game state
     private void Pause(InputAction.CallbackContext ctx)
     {
-        if (gameClock > 0 && timeElapsed <= 0)
+        if (gameClock > 0 && timeElapsed <= 0 && !EndGame.gameEnded)
         {
             if (!isPaused)
             {
@@ -95,6 +100,7 @@ public class StartGame : MonoBehaviour
         }
     }
 
+    // Resume game from pause menu
     public void Resume()
     {
         pauseMenuObject.SetActive(false);
@@ -102,7 +108,10 @@ public class StartGame : MonoBehaviour
         isPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
+    #endregion
 
+    #region Scene Management
+    // Return to the main menu
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
@@ -110,11 +119,14 @@ public class StartGame : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    // Quit the application
     public void Quit()
     {
         Application.Quit();
     }
+    #endregion
 
+    #region Input Handling
     private void OnEnable()
     {
         controls.Pause.Enable();
@@ -124,4 +136,5 @@ public class StartGame : MonoBehaviour
     {
         controls.Pause.Disable();
     }
+    #endregion
 }
