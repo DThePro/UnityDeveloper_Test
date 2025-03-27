@@ -151,10 +151,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1081982233}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 210.8, y: -195.6}
-  m_SizeDelta: {x: 20.7104, y: 20.7104}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -189.20001, y: 29.399994}
+  m_SizeDelta: {x: 20.710388, y: 20.710403}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &23454966
 MonoBehaviour:
@@ -602,7 +602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 94688380}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18875138, y: -0.06915539, z: 0.013326419, w: 0.97949624}
+  m_LocalRotation: {x: 0.18874991, y: -0.06926616, z: 0.0133477645, w: 0.97948843}
   m_LocalPosition: {x: -10.257376, y: 29.99, z: -61.7287}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2887,7 +2887,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b7da7fb6c9b832449518c4e9194dca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicClip: {fileID: 0}
 --- !u!82 &897900595
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6674,7 +6673,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852501133}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -7567,7 +7566,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055999374}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18875138, y: -0.06915538, z: 0.013326412, w: 0.97949624}
+  m_LocalRotation: {x: 0.18874991, y: -0.06926616, z: 0.013347766, w: 0.97948843}
   m_LocalPosition: {x: -10.257376, y: 29.99, z: -61.7287}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
