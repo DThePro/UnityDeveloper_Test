@@ -87,21 +87,19 @@ public class Controller : MonoBehaviour
             {
                 if (isJumping)
                 {
-                    // Calculate jump force using physics formula
                     velocity.y = Mathf.Sqrt(2 * jumpHeight * -gravity);
                     isJumping = false;
                 }
                 else
                 {
-                    // Small downward force to keep the character grounded
-                    velocity.y = -0.1f;
+                    velocity.y = Mathf.Max(velocity.y, -2f); // Apply a small constant downward force to prevent floating
                 }
             }
             else
             {
-                // Apply extra gravity while in the air for a snappier feel
-                velocity.y += gravity * Time.deltaTime * 4;
+                velocity.y += gravity * Time.deltaTime * 5;
             }
+
 
             // Update Animation and Rotation
             HandleAnimation();

@@ -36,6 +36,11 @@ public class InteractController : MonoBehaviour
                     {
                         Destroy(collider.gameObject);
                         scoreText.text = (++points).ToString();
+
+                        if (points == 18)
+                        {
+                            EndGame.Instance.GameEnd(0, 18);
+                        }
                     }
                 }
             }

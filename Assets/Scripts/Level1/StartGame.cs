@@ -8,7 +8,7 @@ public class StartGame : MonoBehaviour
 {
     #region Serialized Fields
     [SerializeField] private float startDelay = 3f, totalTime = 120f;
-    [SerializeField] private TextMeshProUGUI timerText, gameClockText;
+    [SerializeField] private TextMeshProUGUI timerText, gameClockText, startPrompt;
     [SerializeField] private CanvasGroup fadeGroup;
     [SerializeField] private Controller controller;
     [SerializeField] private InteractController interactController;
@@ -51,6 +51,7 @@ public class StartGame : MonoBehaviour
         {
             // Enable player movement and disable UI elements after countdown
             timerText.gameObject.SetActive(false);
+            startPrompt.gameObject.SetActive(false);
             fadeGroup.gameObject.SetActive(false);
             controller.canMove = true;
 
