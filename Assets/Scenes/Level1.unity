@@ -1548,8 +1548,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.004753615, y: 0.9882365, z: -0.14959945, w: -0.031401828}
-  m_LocalPosition: {x: 1.1089722, y: 2.468832, z: 2.0664754}
+  m_LocalRotation: {x: 0.0011750548, y: 0.99881124, z: 0.03697974, w: -0.03173787}
+  m_LocalPosition: {x: 1.2327254, y: 1.5945575, z: 4.0118065}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6123,7 +6123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1042154755
 Transform:
   m_ObjectHideFlags: 0
@@ -8284,8 +8284,8 @@ RectTransform:
   - {fileID: 1778511257}
   - {fileID: 2108528159}
   - {fileID: 1199481736}
-  - {fileID: 1921302789}
   - {fileID: 2109086409}
+  - {fileID: 1921302789}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -13853,7 +13853,7 @@ GameObject:
   - component: {fileID: 2123316016}
   m_Layer: 0
   m_Name: FreeLook Camera
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13955,7 +13955,7 @@ MonoBehaviour:
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 1.65, z: 0}
-  Damping: {x: 0.5, y: 0.5}
+  Damping: {x: 0.1, y: 0.1}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -13976,7 +13976,7 @@ MonoBehaviour:
   TargetOffset: {x: 0, y: 0, z: 0}
   TrackerSettings:
     BindingMode: 4
-    PositionDamping: {x: 1, y: 1, z: 1}
+    PositionDamping: {x: 0.4, y: 0.4, z: 0.4}
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
@@ -13984,14 +13984,14 @@ MonoBehaviour:
   Radius: 10
   Orbits:
     Top:
-      Radius: 0.95
-      Height: 3.19
+      Radius: 1.35
+      Height: 5.02
     Center:
-      Radius: 2.28
-      Height: 1.58
+      Radius: 3.98
+      Height: 1.79
     Bottom:
-      Radius: 2.5
-      Height: 0.1
+      Radius: 0.82
+      Height: -0.35
     SplineCurvature: 0.523
   RecenteringTarget: 2
   HorizontalAxis:
@@ -14005,7 +14005,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   VerticalAxis:
-    Value: 26.1
+    Value: 14
     Center: 17.5
     Range: {x: -10, y: 45}
     Wrap: 0
@@ -14075,8 +14075,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123316009}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0047536152, y: 0.9882365, z: -0.14959945, w: -0.031401828}
-  m_LocalPosition: {x: 1.1089722, y: 2.468832, z: 2.0664754}
+  m_LocalRotation: {x: 0.0011750553, y: 0.99881124, z: 0.036979735, w: -0.03173787}
+  m_LocalPosition: {x: 1.2327254, y: 1.5945575, z: 4.0118065}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14089,29 +14089,38 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123316009}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
+  m_Script: {fileID: 11500000, guid: dbe43d662878a7c43bcd44d43c9e2094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraRadius: 0.4
-  Decollision:
-    Enabled: 0
-    ObstacleLayers:
-      serializedVersion: 2
-      m_Bits: 1
+  CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  IgnoreTag: Player
+  TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  MinimumDistanceFromTarget: 0.3
+  AvoidObstacles:
+    Enabled: 1
+    DistanceLimit: 0
+    MinimumOcclusionTime: 0
+    CameraRadius: 0.4
     UseFollowTarget:
       Enabled: 0
       YOffset: 0
-    Damping: 0.5
+    Strategy: 0
+    MaximumEffort: 4
     SmoothingTime: 0
-  TerrainResolution:
-    Enabled: 1
-    TerrainLayers:
-      serializedVersion: 2
-      m_Bits: 1
-    MaximumRaycast: 10
-    Damping: 0.5
+    Damping: 0.4
+    DampingWhenOccluded: 0.2
+  ShotQualityEvaluation:
+    Enabled: 0
+    OptimalDistance: 10
+    NearLimit: 5
+    FarLimit: 30
+    MaxQualityBoost: 0.2
 --- !u!1 &2141758450
 GameObject:
   m_ObjectHideFlags: 0
@@ -14503,7 +14512,7 @@ GameObject:
   - component: {fileID: 919132149603880279}
   m_Layer: 0
   m_Name: Exo Gray
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14620,9 +14629,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a300bf54afbd6ac4e9dfa83882408adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeedX: 10
-  rotationSpeedY: 10
-  rotationSpeedZ: 10
 --- !u!114 &919132149603880279
 MonoBehaviour:
   m_ObjectHideFlags: 0

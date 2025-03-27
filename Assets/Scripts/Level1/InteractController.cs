@@ -10,13 +10,11 @@ public class InteractController : MonoBehaviour
     private Collider[] interactingObjects;
     public int points = 0;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         scoreText.text = points.ToString();
     }
 
-    // Update is called once per frame
     void Update()
     {
         interactingObjects = Physics.OverlapSphere(transform.position, interactRadius);
@@ -25,8 +23,21 @@ public class InteractController : MonoBehaviour
         {
             if (collider.CompareTag("PointsCube") && canInteract)
             {
-                Destroy(collider.gameObject);
-                scoreText.text = (++points).ToString();
+                // Calculate direction to the collider
+                Vector3 directionToCollider = (collider.transform.position - transform.position).normalized;
+                float distanceToCollider = Vector3.Distance(transform.position, collider.transform.position);
+
+                // Check if there is a clear line of sight using a raycast
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, directionToCollider, out hit, distanceToCollider))
+                {
+                    // If the raycast hits the collider, then it's visible
+                    if (hit.collider == collider)
+                    {
+                        Destroy(collider.gameObject);
+                        scoreText.text = (++points).ToString();
+                    }
+                }
             }
         }
     }
