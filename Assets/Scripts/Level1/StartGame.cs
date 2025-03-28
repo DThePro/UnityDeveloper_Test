@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
+    #region Public Fields
+    public static StartGame Instance;
+    public float startDelay = 3f, totalTime = 120f, gameClock;
+    #endregion
+
     #region Serialized Fields
-    [SerializeField] private float startDelay = 3f, totalTime = 120f;
-    [SerializeField] private TextMeshProUGUI timerText, gameClockText, startPrompt;
+    [SerializeField] private TextMeshProUGUI timerText, gameClockText;
+    [SerializeField] private GameObject startPrompt;
     [SerializeField] private CanvasGroup fadeGroup;
     [SerializeField] private Controller controller;
     [SerializeField] private InteractController interactController;
@@ -16,9 +21,9 @@ public class StartGame : MonoBehaviour
     #endregion
 
     #region Private Fields
-    private float timeElapsed, gameClock;
+    public float timeElapsed;
     private GlobalControls controls;
-    private bool isPaused = false;
+    public bool isPaused = false;
     #endregion
 
     #region Unity Callbacks
@@ -27,6 +32,12 @@ public class StartGame : MonoBehaviour
         // Initialize input controls
         controls = new GlobalControls();
         controls.Pause.PauseAction.started += ctx => Pause(ctx);
+
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else Destroy(gameObject);
     }
 
     private void Start()
@@ -51,7 +62,7 @@ public class StartGame : MonoBehaviour
         {
             // Enable player movement and disable UI elements after countdown
             timerText.gameObject.SetActive(false);
-            startPrompt.gameObject.SetActive(false);
+            startPrompt.SetActive(false);
             fadeGroup.gameObject.SetActive(false);
             controller.canMove = true;
 
@@ -72,7 +83,7 @@ public class StartGame : MonoBehaviour
             if (gameClock <= 0)
             {
                 interactController.canInteract = false;
-                EndGame.Instance.GameEnd(0, interactController.points);
+                EndGame.Instance.GameEnd(0, interactController.points, "-1");
             }
         }
     }
@@ -82,7 +93,7 @@ public class StartGame : MonoBehaviour
     // Toggle pause menu and game state
     private void Pause(InputAction.CallbackContext ctx)
     {
-        if (gameClock > 0 && timeElapsed <= 0 && !EndGame.gameEnded)
+        if (gameClock > 0 && timeElapsed <= 0 && !EndGame.Instance.gameEnded)
         {
             if (!isPaused)
             {

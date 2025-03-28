@@ -39,7 +39,7 @@ public class InteractController : MonoBehaviour
 
                         if (points == 18)
                         {
-                            EndGame.Instance.GameEnd(0, 18);
+                            EndGame.Instance.GameEnd(0, 18, (Mathf.Round((StartGame.Instance.totalTime - StartGame.Instance.gameClock) * 1000f) / 1000f).ToString());
                         }
                     }
                 }

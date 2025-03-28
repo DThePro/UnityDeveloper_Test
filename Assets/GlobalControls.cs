@@ -44,6 +44,15 @@ public partial class @GlobalControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""d5e4b6a4-d95a-4de0-b6ef-221742d099f1"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -104,12 +113,56 @@ public partial class @GlobalControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""89d7daf1-df57-47c8-a259-04116fe2d89f"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Running"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""0743e577-b479-4e31-91c9-6890f4f97dc1"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jumping"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e988c259-e99f-4fcd-8cd4-edb20be8a56f"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jumping"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2fca2506-44e9-4ad6-b825-92fa208156a8"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": ""ScaleVector2(x=10,y=10)"",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""24b7c2c3-b5cb-4f09-a91e-8229da35d2c5"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -121,7 +174,7 @@ public partial class @GlobalControls: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""SelectDirection"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""3edbaf2e-74fd-4c70-8afd-97f40def9417"",
                     ""expectedControlType"": """",
                     ""processors"": """",
@@ -194,6 +247,50 @@ public partial class @GlobalControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""7705af5e-5d7b-41fe-b954-2814abccd8b3"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f10be394-4482-4642-9694-a6258064f550"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""acc96fc7-7699-4e66-8fc2-5331086ccd73"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""04699900-fb16-4d3e-8eb2-fdca61e8e896"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""4fd8806d-38ca-45c7-b3d7-341f24851684"",
                     ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
@@ -205,8 +302,30 @@ public partial class @GlobalControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""7cb889a4-ba09-4054-92d4-5b09b12de9b1"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ConfirmRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""f112b494-5181-4ec3-9b39-ad6c3ec042d2"",
                     ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DisableRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9bbe33e7-aae3-4dc6-8a28-1902bb1a2d07"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -241,6 +360,56 @@ public partial class @GlobalControls: IInputActionCollection2, IDisposable
                     ""action"": ""PauseAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74d06a68-044e-4fc5-bba5-4517c6ce46ec"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Skip"",
+            ""id"": ""c98c22d4-8571-4104-a22f-5e86097eb506"",
+            ""actions"": [
+                {
+                    ""name"": ""SkipAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""871fe451-a5ed-45f4-b066-1f01d8bb396e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f128b3a5-b5c8-4aa0-8441-619826cdad0d"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkipAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a89fdd1c-d2dd-4b45-8af5-9dc98ccb8ba3"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkipAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -251,6 +420,7 @@ public partial class @GlobalControls: IInputActionCollection2, IDisposable
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_Running = m_Movement.FindAction("Running", throwIfNotFound: true);
         m_Movement_Jumping = m_Movement.FindAction("Jumping", throwIfNotFound: true);
+        m_Movement_Look = m_Movement.FindAction("Look", throwIfNotFound: true);
         // Rotate
         m_Rotate = asset.FindActionMap("Rotate", throwIfNotFound: true);
         m_Rotate_SelectDirection = m_Rotate.FindAction("SelectDirection", throwIfNotFound: true);
@@ -259,6 +429,9 @@ public partial class @GlobalControls: IInputActionCollection2, IDisposable
         // Pause
         m_Pause = asset.FindActionMap("Pause", throwIfNotFound: true);
         m_Pause_PauseAction = m_Pause.FindAction("PauseAction", throwIfNotFound: true);
+        // Skip
+        m_Skip = asset.FindActionMap("Skip", throwIfNotFound: true);
+        m_Skip_SkipAction = m_Skip.FindAction("SkipAction", throwIfNotFound: true);
     }
 
     ~@GlobalControls()
@@ -266,6 +439,7 @@ public partial class @GlobalControls: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Movement.enabled, "This will cause a leak and performance issues, GlobalControls.Movement.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Rotate.enabled, "This will cause a leak and performance issues, GlobalControls.Rotate.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Pause.enabled, "This will cause a leak and performance issues, GlobalControls.Pause.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Skip.enabled, "This will cause a leak and performance issues, GlobalControls.Skip.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -329,12 +503,14 @@ public partial class @GlobalControls: IInputActionCollection2, IDisposable
     private List<IMovementActions> m_MovementActionsCallbackInterfaces = new List<IMovementActions>();
     private readonly InputAction m_Movement_Running;
     private readonly InputAction m_Movement_Jumping;
+    private readonly InputAction m_Movement_Look;
     public struct MovementActions
     {
         private @GlobalControls m_Wrapper;
         public MovementActions(@GlobalControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Running => m_Wrapper.m_Movement_Running;
         public InputAction @Jumping => m_Wrapper.m_Movement_Jumping;
+        public InputAction @Look => m_Wrapper.m_Movement_Look;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -350,6 +526,9 @@ public partial class @GlobalControls: IInputActionCollection2, IDisposable
             @Jumping.started += instance.OnJumping;
             @Jumping.performed += instance.OnJumping;
             @Jumping.canceled += instance.OnJumping;
+            @Look.started += instance.OnLook;
+            @Look.performed += instance.OnLook;
+            @Look.canceled += instance.OnLook;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
@@ -360,6 +539,9 @@ public partial class @GlobalControls: IInputActionCollection2, IDisposable
             @Jumping.started -= instance.OnJumping;
             @Jumping.performed -= instance.OnJumping;
             @Jumping.canceled -= instance.OnJumping;
+            @Look.started -= instance.OnLook;
+            @Look.performed -= instance.OnLook;
+            @Look.canceled -= instance.OnLook;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -485,10 +667,57 @@ public partial class @GlobalControls: IInputActionCollection2, IDisposable
         }
     }
     public PauseActions @Pause => new PauseActions(this);
+
+    // Skip
+    private readonly InputActionMap m_Skip;
+    private List<ISkipActions> m_SkipActionsCallbackInterfaces = new List<ISkipActions>();
+    private readonly InputAction m_Skip_SkipAction;
+    public struct SkipActions
+    {
+        private @GlobalControls m_Wrapper;
+        public SkipActions(@GlobalControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @SkipAction => m_Wrapper.m_Skip_SkipAction;
+        public InputActionMap Get() { return m_Wrapper.m_Skip; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SkipActions set) { return set.Get(); }
+        public void AddCallbacks(ISkipActions instance)
+        {
+            if (instance == null || m_Wrapper.m_SkipActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_SkipActionsCallbackInterfaces.Add(instance);
+            @SkipAction.started += instance.OnSkipAction;
+            @SkipAction.performed += instance.OnSkipAction;
+            @SkipAction.canceled += instance.OnSkipAction;
+        }
+
+        private void UnregisterCallbacks(ISkipActions instance)
+        {
+            @SkipAction.started -= instance.OnSkipAction;
+            @SkipAction.performed -= instance.OnSkipAction;
+            @SkipAction.canceled -= instance.OnSkipAction;
+        }
+
+        public void RemoveCallbacks(ISkipActions instance)
+        {
+            if (m_Wrapper.m_SkipActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ISkipActions instance)
+        {
+            foreach (var item in m_Wrapper.m_SkipActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_SkipActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public SkipActions @Skip => new SkipActions(this);
     public interface IMovementActions
     {
         void OnRunning(InputAction.CallbackContext context);
         void OnJumping(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
     public interface IRotateActions
     {
@@ -499,5 +728,9 @@ public partial class @GlobalControls: IInputActionCollection2, IDisposable
     public interface IPauseActions
     {
         void OnPauseAction(InputAction.CallbackContext context);
+    }
+    public interface ISkipActions
+    {
+        void OnSkipAction(InputAction.CallbackContext context);
     }
 }

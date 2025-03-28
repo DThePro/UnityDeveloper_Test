@@ -7,7 +7,7 @@ public class EndGame : MonoBehaviour
     [SerializeField] GameObject endPanel;
 
     public static EndGame Instance;
-    public static bool gameEnded = false;
+    public bool gameEnded = false;
     #endregion
 
     private void Awake()
@@ -23,9 +23,14 @@ public class EndGame : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        gameEnded = false;
+    }
+
     #region Public Methods
     // Trigger the end game sequence with different messages based on the state and points scored
-    public void GameEnd(int state, int pointsScored)
+    public void GameEnd(int state, int pointsScored, string time)
     {
         if (!gameEnded)
         {
@@ -34,7 +39,10 @@ public class EndGame : MonoBehaviour
             {
                 endPanel.SetActive(true);
                 // Display points collected
-                endPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "You collected " + pointsScored + " out of 18 plasma cubes.";
+                if (time != "-1")
+                    endPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "You collected " + pointsScored + " out of 18 plasma cubes in " + time + " seconds.";
+                else
+                    endPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "You collected " + pointsScored + " out of 18 plasma cubes.";
 
                 TextMeshProUGUI ending = endPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
 

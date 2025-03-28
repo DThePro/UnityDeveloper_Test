@@ -127,7 +127,7 @@ public class Controller : MonoBehaviour
         // If signal is completely lost, trigger game end
         if (spriteIndex == 0)
         {
-            EndGame.Instance.GameEnd(1, 0);
+            EndGame.Instance.GameEnd(1, 0, "-1");
         }
     }
 

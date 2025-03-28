@@ -118,57 +118,77 @@ public class GravityController : MonoBehaviour
     // Confirm and execute the gravity switch if not currently rotating
     private void ConfirmRotate(InputAction.CallbackContext ctx)
     {
-        if (!isRotating && rotateMode)
+        if (!StartGame.Instance.isPaused && StartGame.Instance.timeElapsed <= 0)
         {
-            SwitchGravity(ProcessDirection(rotateDirection));
-            rotateMode = false;
+            if (!isRotating && rotateMode)
+            {
+                SwitchGravity(ProcessDirection(rotateDirection));
+                rotateMode = false;
+            }
+            hologramObject.SetActive(false);
+            Debug.Log(ctx.control.name);
+            StartCoroutine(FadeCanvasGroup(rotationPromptPanel, 0, 0.2f));
         }
-        hologramObject.SetActive(false);
-        Debug.Log(ctx.control.name);
-        StartCoroutine(FadeCanvasGroup(rotationPromptPanel, 0, 0.2f));
     }
 
     // Activate rotation mode and set hologram orientation based on the selected direction
     private void SelectDirection(InputAction.CallbackContext ctx)
     {
-        rotateMode = true;
-        hologramObject.SetActive(true);
-        switch (ctx.control.name)
+        if (!StartGame.Instance.isPaused && StartGame.Instance.timeElapsed <= 0)
         {
-            case "upArrow":
-                rotateDirection = playerTransform.forward;
-                break;
-            case "downArrow":
-                rotateDirection = -playerTransform.forward;
-                break;
-            case "leftArrow":
-                rotateDirection = -playerTransform.right;
-                break;
-            case "rightArrow":
-                rotateDirection = playerTransform.right;
-                break;
-        }
+            rotateMode = true;
+            hologramObject.SetActive(true);
+            switch (ctx.control.name)
+            {
+                case "upArrow":
+                    rotateDirection = playerTransform.forward;
+                    break;
+                case "downArrow":
+                    rotateDirection = -playerTransform.forward;
+                    break;
+                case "leftArrow":
+                    rotateDirection = -playerTransform.right;
+                    break;
+                case "rightArrow":
+                    rotateDirection = playerTransform.right;
+                    break;
+                case "up":
+                    rotateDirection = playerTransform.forward;
+                    break;
+                case "down":
+                    rotateDirection = -playerTransform.forward;
+                    break;
+                case "left":
+                    rotateDirection = -playerTransform.right;
+                    break;
+                case "right":
+                    rotateDirection = playerTransform.right;
+                    break;
+            }
 
-        // Set the hologram rotation based on the dominant direction
-        if (ProcessDirection(rotateDirection) == new Vector3(1, 0, 0))
-        {
-            hologramObject.transform.localEulerAngles = new Vector3(0, 0, -90);
-        }
-        else if (ProcessDirection(rotateDirection) == new Vector3(-1, 0, 0))
-        {
-            hologramObject.transform.localEulerAngles = new Vector3(0, 0, 90);
-        }
-        else if (ProcessDirection(rotateDirection) == new Vector3(0, 0, 1))
-        {
-            hologramObject.transform.localEulerAngles = new Vector3(0, 90, 90);
-        }
-        else
-        {
-            hologramObject.transform.localEulerAngles = new Vector3(0, 90, -90);
-        }
+            Debug.Log(ctx.control.name);
 
-        Debug.Log(ProcessDirection(rotateDirection));
-        StartCoroutine(FadeCanvasGroup(rotationPromptPanel, 1, 0.2f));
+            // Set the hologram rotation based on the dominant direction
+            if (ProcessDirection(rotateDirection) == new Vector3(1, 0, 0))
+            {
+                hologramObject.transform.localEulerAngles = new Vector3(0, 0, -90);
+            }
+            else if (ProcessDirection(rotateDirection) == new Vector3(-1, 0, 0))
+            {
+                hologramObject.transform.localEulerAngles = new Vector3(0, 0, 90);
+            }
+            else if (ProcessDirection(rotateDirection) == new Vector3(0, 0, 1))
+            {
+                hologramObject.transform.localEulerAngles = new Vector3(0, 90, 90);
+            }
+            else
+            {
+                hologramObject.transform.localEulerAngles = new Vector3(0, 90, -90);
+            }
+
+            Debug.Log(ProcessDirection(rotateDirection));
+            StartCoroutine(FadeCanvasGroup(rotationPromptPanel, 1, 0.2f));
+        }
     }
 
     // Fade a CanvasGroup to the target alpha over a specified duration
